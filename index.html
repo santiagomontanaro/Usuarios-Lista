@@ -17,9 +17,11 @@
         </div>
         <hr>
         <div v-for="user in users">
-            <p>Email: {{user.email}}</p>
-            <p>Nombre: {{user.first_name}}</p>
-            <p>Apellido: {{user.last_name}}</p>
+            <p><b>ID:</b> {{user.id}}</p>
+            <p><b>Email:</b> {{user.email}}</p>
+            <p><b>Nombre:</b> {{user.first_name}}</p>
+            <p><b>Apellido:</b> {{user.last_name}}</p>
+            <img v-bind:src="user.avatar">
             <hr>
         </div>
     </div>
@@ -35,7 +37,7 @@
             methods: {
                 consumirApi: function() {
                     this.$http.get("https://reqres.in/api/users").then(function(response){
-                        this.users = response.data.email;
+                        this.users = response.body.data;
                     })
                 }
             }
